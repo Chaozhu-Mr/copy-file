@@ -1,0 +1,39 @@
+                                                fs
+
+1.读取文件
+fs.readFile("读取的文件路径"，function(err,data))
+
+2.读取文夹
+fs.readdir("读取的文件路径"，function(err,data))
+
+3.写入文件
+fs.readdir("写入路径"，"写入内容",function(err,data))
+
+4.查看文件信息 判断是文件还是文件夹
+fs.stat("路径",function(err,st))   st.isFile()判断是不是文件    st.isDirectory()判断是不是文件夹
+
+5.小文件拷贝
+fs.writeFileSync("写的路径",fs.readFileSync("读的路径"))
+
+
+6.大文件拷贝
+
+var rs=fs.creatReadStream("读取的路径")
+
+var rs=fs.creatWriteStream("写入的路径")
+
+rs.pipe(ws)
+
+
+
+
+path.normalize这个方法是做什么的？：将传入的路径转换为标准路径
+
+下面那个方法是将多个路径拼接为标准路径？： path.join
+
+path.parse方法会返回什么？ 返回传入路径的后缀名   返回传入路径的根目录
+
+
+
+
+

@@ -1,0 +1,33 @@
+      服务端
+const http=require('http');
+http.createServer(function (request,response){
+    if(request.url.indexOf('favicon.ico')!==-1){
+        return;
+    }
+    response.writeHead(200,{
+        "Content-Type":'text/html;charset=utf/8'
+    });
+    response.end('111');
+}).listen(8111,function (){
+    console.log(1)
+})；
+
+
+
+    客户端                                                                              
+
+const http=require('http');
+http.request({
+    host:'localhost',
+    port:8111,
+    path:'/',
+    method:'get',
+    headers:{
+
+    }
+},response=>{
+    response.setEncoding('utf-8')
+    response.on('data',function (chunk){
+        console.log(chunk)
+    })
+}).end();

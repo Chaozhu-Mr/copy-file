@@ -1,0 +1,20 @@
+const http=require('http');
+const fs=require('fs');
+const zlib=require('zlib');
+http.request({
+    host:'www.kugou.com',
+    port:80,
+    path:'/yy/html/rank.html',
+    method:'get',
+    headers:{
+
+    }
+},response=>{
+    const con=response.headers['content-encoding'];
+    const ws=fs.createWriteStream('./a.html');
+    if(con && con.indexOf('gzip')!==-1){
+        response.pipe(zlib.creatGunzip()).pipe(ws);
+    }else{
+        response.pipe(ws);
+    }
+}).end();
